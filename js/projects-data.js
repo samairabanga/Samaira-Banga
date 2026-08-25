@@ -50,5 +50,53 @@ const PROJECTS = [
       "Placeholder body copy for the Gamma project detail page. Replace with the real write-up once content is finalized.",
       "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
     ]
+  },
+  {
+    slug: "jumboventures",
+    title: "JumboVentures",
+    role: "Tufts startup incubator club",
+    summary: "Director of Partnerships at JumboVentures, Tufts' student-run startup incubator club.",
+    cover: "assets/jumboventures-cover.jpg",
+    facts: {
+      Role: "Director of Partnerships",
+      Year: "TBD",
+      Type: "TBD"
+    },
+    body: [
+      "Placeholder body copy for the JumboVentures project detail page. Replace with the real write-up once content is finalized.",
+      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+    ]
+  },
+  {
+    slug: "clodo",
+    title: "Clodo AI (YC)",
+    role: "Backed by Y Combinator — planet scale people sourcing",
+    summary: "Head of Growth at Clodo AI (YC), a planet-scale people sourcing platform.",
+    cover: "assets/clodo-cover.jpg",
+    facts: {
+      Role: "Head of Growth",
+      Year: "TBD",
+      Type: "TBD"
+    },
+    body: [
+      "Placeholder body copy for the Clodo AI project detail page. Replace with the real write-up once content is finalized.",
+      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+    ]
+  },
+  {
+    slug: "girlsintovc",
+    title: "Girls into VC",
+    role: "Closing the gender gap in venture capital",
+    summary: "Regional Lead at Girls into VC, working to close the gender gap in venture capital.",
+    cover: "assets/girlsintovc-cover.jpg",
+    facts: {
+      Role: "Regional Lead",
+      Year: "TBD",
+      Type: "TBD"
+    },
+    body: [
+      "Placeholder body copy for the Girls into VC project detail page. Replace with the real write-up once content is finalized.",
+      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+    ]
   }
 ];
