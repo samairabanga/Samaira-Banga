@@ -2,19 +2,11 @@ function renderBookshelf() {
   const shelf = document.getElementById("bookshelf");
   if (!shelf) return;
 
-  shelf.innerHTML = PROJECTS.map((p, i) => `
+  shelf.innerHTML = PROJECTS.map((p) => `
     <div class="book-card">
       <a class="book-link" href="project.html?slug=${encodeURIComponent(p.slug)}">
         <div class="book">
-          <div class="book-spine"></div>
-          <div class="book-cover" style="background:${p.cover}">
-            <span class="book-index">${String(i + 1).padStart(2, "0")}</span>
-          </div>
-          <div class="book-pages"></div>
-        </div>
-        <div class="book-meta">
-          <h3>${p.title}</h3>
-          <div class="book-role">${p.role}</div>
+          <img src="${p.cover}" alt="${p.title} project book cover" />
         </div>
       </a>
     </div>
@@ -39,7 +31,7 @@ function renderDetail() {
 
   el.innerHTML = `
     <div class="detail-grid">
-      <div class="detail-cover" style="background:${project.cover}"></div>
+      <img class="detail-cover" src="${project.cover}" alt="${project.title} project book cover" />
       <div>
         <div class="detail-role">${project.role}</div>
         <h1 class="detail-title">${project.title}</h1>

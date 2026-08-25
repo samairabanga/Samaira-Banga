@@ -1,30 +1,46 @@
 // Central place to edit project content. Each project becomes one
 // "book" on the Projects shelf and one detail page.
-// `cover` is a CSS background value — swap in a real image any time with
-// e.g. cover: "url('../assets/clodo-cover.jpg')".
+// `cover` points at an image in assets/ — the book render itself
+// (spine, pages, shadow) should already be baked into that image.
 const PROJECTS = [
   {
-    slug: "clodo-ai",
-    title: "Clodo AI (YC)",
-    role: "Placeholder role — replace me",
-    summary: "One or two sentence placeholder summary of the Clodo AI project. Swap this out with the real description.",
-    cover: "linear-gradient(135deg, #0e0f13 0%, #1c1f29 55%, #3a3226 100%)",
+    slug: "whoop",
+    title: "WHOOP",
+    role: "Wearable fitness and health platform",
+    summary: "Placeholder summary of your work at WHOOP. Swap this out with the real description.",
+    cover: "assets/whoop-cover.jpg",
     facts: {
       Role: "TBD",
       Year: "TBD",
       Type: "TBD"
     },
     body: [
-      "Placeholder body copy for the Clodo AI project detail page. Replace with the real write-up once content is finalized.",
+      "Placeholder body copy for the WHOOP project detail page. Replace with the real write-up once content is finalized.",
+      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+    ]
+  },
+  {
+    slug: "sunrooof",
+    title: "SUNROOOF",
+    role: "Patented wellness lighting technology",
+    summary: "Placeholder summary of your work at SUNROOOF. Swap this out with the real description.",
+    cover: "assets/sunrooof-cover.jpg",
+    facts: {
+      Role: "TBD",
+      Year: "TBD",
+      Type: "TBD"
+    },
+    body: [
+      "Placeholder body copy for the SUNROOOF project detail page. Replace with the real write-up once content is finalized.",
       "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
     ]
   },
   {
     slug: "gamma",
-    title: "Gamma",
-    role: "Placeholder role — replace me",
-    summary: "One or two sentence placeholder summary of the Gamma project. Swap this out with the real description.",
-    cover: "linear-gradient(135deg, #d8b788 0%, #c79a5f 50%, #a9793f 100%)",
+    title: "GAMMA",
+    role: "AI powered presentations",
+    summary: "Placeholder summary of your work at Gamma. Swap this out with the real description.",
+    cover: "assets/gamma-cover.jpg",
     facts: {
       Role: "TBD",
       Year: "TBD",
@@ -32,22 +48,6 @@ const PROJECTS = [
     },
     body: [
       "Placeholder body copy for the Gamma project detail page. Replace with the real write-up once content is finalized.",
-      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
-    ]
-  },
-  {
-    slug: "jumboventures",
-    title: "JumboVentures",
-    role: "Placeholder role — replace me",
-    summary: "One or two sentence placeholder summary of the JumboVentures project. Swap this out with the real description.",
-    cover: "linear-gradient(135deg, #f2ede1 0%, #ddd2ba 55%, #b7a685 100%)",
-    facts: {
-      Role: "TBD",
-      Year: "TBD",
-      Type: "TBD"
-    },
-    body: [
-      "Placeholder body copy for the JumboVentures project detail page. Replace with the real write-up once content is finalized.",
       "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
     ]
   }
