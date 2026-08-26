@@ -89,6 +89,15 @@ function renderDetail() {
     ${factsHtml}
   `;
 
+  // Full-width horizontal photo(s), clickable, with a caption below —
+  // distinct from the narrow portrait video-row pairing below.
+  const photosHtml = (project.photos || []).map((p) => `
+    <a class="detail-photo" href="${p.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} photo on LinkedIn">
+      <img src="${p.image}" alt="${project.title}" />
+    </a>
+    ${p.caption ? `<p class="detail-photo-caption">${p.caption}</p>` : ""}
+  `).join("");
+
   if (project.videos && project.videos.length) {
     // Pair each video with the body paragraph at the same index, so
     // e.g. video 2's thumbnail and the "#2 ..." paragraph start at
@@ -118,12 +127,13 @@ function renderDetail() {
 
     el.innerHTML = `
       ${headerHtml}
+      ${photosHtml}
       <div class="detail-video-rows">${rowsHtml}</div>
       ${extraBodyHtml ? `<div class="detail-body">${extraBodyHtml}</div>` : ""}
     `;
   } else {
     const bodyHtml = project.body.map((para) => `<p>${para}</p>`).join("");
-    el.innerHTML = `${headerHtml}<div class="detail-body">${bodyHtml}</div>`;
+    el.innerHTML = `${headerHtml}${photosHtml}<div class="detail-body">${bodyHtml}</div>`;
   }
 
   playBookOpeningIntro(project);

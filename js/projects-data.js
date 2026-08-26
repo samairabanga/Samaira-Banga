@@ -9,6 +9,14 @@ const PROJECTS = [
     role: "Wearable fitness and health platform",
     meta: "Role — TBD",
     cover: "assets/whoop-cover.jpg",
+    // Full-width horizontal photo, clickable, with a caption below it.
+    photos: [
+      {
+        image: "assets/whoop.jpg",
+        caption: "Campaign for the MASS AI Coalition, a private sector initiative encouraging founders, operators, and students new to Boston to build from Boston.",
+        url: "https://www.linkedin.com/feed/update/urn:li:activity:7473116035550736384/"
+      }
+    ],
     body: [
       "Placeholder body copy for the WHOOP project detail page. Replace with the real write-up once content is finalized.",
       "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
