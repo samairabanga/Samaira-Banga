@@ -99,36 +99,37 @@ function renderDetail() {
   `).join("");
 
   if (project.videos && project.videos.length) {
-    // Each video carries its own `text` paragraph(s), rendered right next
-    // to it in a shared grid row — so however many paragraphs a video
-    // needs, they start at exactly that video's vertical position.
-    const rowsHtml = project.videos.map((v, i) => {
+    // All thumbnails sit in one row (side by side, wrapping if needed),
+    // then every video's text flows below as one shared block — so the
+    // row's height is just whatever the tallest thumbnail needs, and
+    // there's no forced empty space next to short captions.
+    const galleryHtml = project.videos.map((v, i) => {
       const isVideo = /instagram\.com/.test(v.url);
       const label = isVideo
         ? `Watch ${project.title} video ${i + 1} on Instagram`
         : `View ${project.title} photo ${i + 1} on LinkedIn`;
       const altText = isVideo ? `video ${i + 1} thumbnail` : `photo ${i + 1}`;
       const badge = isVideo ? `<span class="play-badge">&#9654;</span>` : "";
-      const rowTextHtml = (v.text || []).map((t) => `<p>${t}</p>`).join("");
 
       return `
-        <div class="video-row">
-          <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${label}">
-            <img src="${v.thumbnail}" alt="${project.title} ${altText}" />
-            ${badge}
-          </a>
-          <div class="video-row-text">${rowTextHtml}</div>
-        </div>
+        <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${label}">
+          <img src="${v.thumbnail}" alt="${project.title} ${altText}" />
+          ${badge}
+        </a>
       `;
     }).join("");
 
-    const bodyHtml = (project.body || []).map((para) => `<p>${para}</p>`).join("");
+    const galleryTextHtml = project.videos
+      .flatMap((v) => v.text || [])
+      .concat(project.body || [])
+      .map((para) => `<p>${para}</p>`)
+      .join("");
 
     el.innerHTML = `
       ${headerHtml}
       ${photosHtml}
-      <div class="detail-video-rows">${rowsHtml}</div>
-      ${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}
+      <div class="detail-gallery">${galleryHtml}</div>
+      ${galleryTextHtml ? `<div class="detail-body">${galleryTextHtml}</div>` : ""}
     `;
   } else {
     const bodyHtml = (project.body || []).map((para) => `<p>${para}</p>`).join("");

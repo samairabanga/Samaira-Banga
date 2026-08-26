@@ -374,30 +374,18 @@ footer.site-footer .wrap {
   margin-bottom: 4px;
 }
 
-/* ---------- Project videos (each paired with its numbered paragraph) ---------- */
+/* ---------- Project videos (all thumbnails in a row, text flows below) ---------- */
 
-.detail-video-rows {
+.detail-gallery {
   display: flex;
-  flex-direction: column;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 32px;
   margin-top: 40px;
 }
 
-.video-row {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 56px;
-  align-items: start;
-}
-
-.video-row-text p {
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 1.08rem;
-}
-
-.video-row-text p + p {
-  margin-top: 20px;
+.detail-gallery .detail-video-thumb {
+  flex: 1 1 220px;
+  max-width: 320px;
 }
 
 .detail-video-thumb {
@@ -439,6 +427,7 @@ footer.site-footer .wrap {
   .page-title { font-size: 2.4rem; }
   .detail-title { font-size: 2.8rem; }
   .detail-summary { font-size: 1.15rem; }
-  .video-row { grid-template-columns: 1fr; gap: 20px; }
+  .detail-gallery { gap: 16px; }
+  .detail-gallery .detail-video-thumb { flex-basis: 140px; }
   nav.main-nav { gap: 24px; }
 }
