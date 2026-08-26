@@ -33,6 +33,12 @@ const PROJECTS = [
     body: [
       "Placeholder body copy for the SUNROOOF project detail page. Replace with the real write-up once content is finalized.",
       "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+    ],
+    // Each entry is a clickable thumbnail that opens the Instagram Reel
+    // in a new tab. Swap in the real thumbnail filenames + Reel URLs.
+    videos: [
+      { thumbnail: "assets/sunrooof-reel-1.jpg", url: "#" },
+      { thumbnail: "assets/sunrooof-reel-2.jpg", url: "#" }
     ]
   },
   {

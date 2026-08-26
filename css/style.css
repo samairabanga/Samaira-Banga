@@ -349,6 +349,56 @@ footer.site-footer .wrap {
   margin-bottom: 4px;
 }
 
+/* ---------- Project videos (left column, links out to Reels) ---------- */
+
+.detail-with-video {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.detail-videos {
+  position: sticky;
+  top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-video-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 9 / 16;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #050505;
+  box-shadow: 10px 14px 24px rgba(28, 26, 23, 0.22);
+}
+
+.detail-video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.detail-video-thumb:hover img {
+  transform: scale(1.04);
+}
+
+.detail-video-thumb .play-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  background: rgba(5, 5, 5, 0.18);
+}
+
 @media (max-width: 760px) {
   .wrap { padding: 0 22px; }
   .detail-full { padding: 0 22px; }
@@ -357,5 +407,8 @@ footer.site-footer .wrap {
   .detail-title { font-size: 2.8rem; }
   .detail-summary { font-size: 1.15rem; }
   .detail-body { column-count: 1; }
+  .detail-with-video { grid-template-columns: 1fr; }
+  .detail-videos { position: static; flex-direction: row; }
+  .detail-video-thumb { flex: 1; }
   nav.main-nav { gap: 24px; }
 }

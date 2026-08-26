@@ -76,13 +76,31 @@ function renderDetail() {
 
   const bodyHtml = project.body.map((para) => `<p>${para}</p>`).join("");
 
-  el.innerHTML = `
+  const textHtml = `
     <div class="detail-role">${project.role}</div>
     <h1 class="detail-title">${project.title}</h1>
     <p class="detail-summary">${project.summary}</p>
     <div class="detail-facts">${factsHtml}</div>
     <div class="detail-body">${bodyHtml}</div>
   `;
+
+  if (project.videos && project.videos.length) {
+    const videosHtml = project.videos.map((v, i) => `
+      <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${project.title} video ${i + 1} on Instagram">
+        <img src="${v.thumbnail}" alt="${project.title} video ${i + 1} thumbnail" />
+        <span class="play-badge">&#9654;</span>
+      </a>
+    `).join("");
+
+    el.innerHTML = `
+      <div class="detail-with-video">
+        <div class="detail-videos">${videosHtml}</div>
+        <div class="detail-text">${textHtml}</div>
+      </div>
+    `;
+  } else {
+    el.innerHTML = textHtml;
+  }
 
   playBookOpeningIntro(project);
 }
