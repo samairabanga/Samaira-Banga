@@ -338,21 +338,26 @@ footer.site-footer .wrap {
   margin-bottom: 4px;
 }
 
-/* ---------- Project videos (left column, links out to Reels) ---------- */
+/* ---------- Project videos (each paired with its numbered paragraph) ---------- */
 
-.detail-with-video {
+.detail-video-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.video-row {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: 56px;
   align-items: start;
 }
 
-.detail-videos {
-  position: sticky;
-  top: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.video-row-text p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
 }
 
 .detail-video-thumb {
@@ -395,8 +400,6 @@ footer.site-footer .wrap {
   .detail-title { font-size: 2.8rem; }
   .detail-summary { font-size: 1.15rem; }
   .detail-body { column-count: 1; }
-  .detail-with-video { grid-template-columns: 1fr; }
-  .detail-videos { position: static; flex-direction: row; }
-  .detail-video-thumb { flex: 1; }
+  .video-row { grid-template-columns: 1fr; gap: 20px; }
   nav.main-nav { gap: 24px; }
 }

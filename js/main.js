@@ -81,33 +81,40 @@ function renderDetail() {
         .map(([k, v]) => `<div><span>${k}</span>${v}</div>`)
         .join("")}</div>` : "";
 
-  const bodyHtml = project.body.map((para) => `<p>${para}</p>`).join("");
-
-  const textHtml = `
+  const headerHtml = `
     <div class="detail-role">${project.role}</div>
     <h1 class="detail-title">${project.title}</h1>
     ${summaryHtml}
     ${metaHtml}
     ${factsHtml}
-    <div class="detail-body">${bodyHtml}</div>
   `;
 
   if (project.videos && project.videos.length) {
-    const videosHtml = project.videos.map((v, i) => `
-      <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${project.title} video ${i + 1} on Instagram">
-        <img src="${v.thumbnail}" alt="${project.title} video ${i + 1} thumbnail" />
-        <span class="play-badge">&#9654;</span>
-      </a>
+    // Pair each video with the body paragraph at the same index, so
+    // e.g. video 2's thumbnail and the "#2 ..." paragraph start at
+    // exactly the same vertical position (a shared CSS grid row).
+    const pairCount = Math.min(project.videos.length, project.body.length);
+
+    const rowsHtml = project.videos.slice(0, pairCount).map((v, i) => `
+      <div class="video-row">
+        <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${project.title} video ${i + 1} on Instagram">
+          <img src="${v.thumbnail}" alt="${project.title} video ${i + 1} thumbnail" />
+          <span class="play-badge">&#9654;</span>
+        </a>
+        <div class="video-row-text"><p>${project.body[i]}</p></div>
+      </div>
     `).join("");
 
+    const extraBodyHtml = project.body.slice(pairCount).map((para) => `<p>${para}</p>`).join("");
+
     el.innerHTML = `
-      <div class="detail-with-video">
-        <div class="detail-videos">${videosHtml}</div>
-        <div class="detail-text">${textHtml}</div>
-      </div>
+      ${headerHtml}
+      <div class="detail-video-rows">${rowsHtml}</div>
+      ${extraBodyHtml ? `<div class="detail-body">${extraBodyHtml}</div>` : ""}
     `;
   } else {
-    el.innerHTML = textHtml;
+    const bodyHtml = project.body.map((para) => `<p>${para}</p>`).join("");
+    el.innerHTML = `${headerHtml}<div class="detail-body">${bodyHtml}</div>`;
   }
 
   playBookOpeningIntro(project);
