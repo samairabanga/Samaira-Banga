@@ -101,16 +101,15 @@ const PROJECTS = [
     slug: "clodo",
     title: "Clodo AI (YC)",
     role: "Backed by Y Combinator — planet scale people sourcing",
-    meta: "Head of Growth",
+    meta: "#1 Growth",
     cover: "assets/clodo-cover.jpg",
     // Numbered sections: an optional heading, a row of images (max 2 per
     // row), then a shared caption below the whole row.
     sections: [
       {
-        title: "#1 Growth",
         images: ["assets/clodo-1.png", "assets/clodo-2.png"],
         text: [
-          "Created Founder-Led content on LinkedIn, scaling from 0 to 2M+ impressions, 0 to $40k revenue."
+          "Created Founder-Led content on LinkedIn for <a class=\"inline-link\" href=\"https://www.linkedin.com/in/sidharthrajaram/\" target=\"_blank\" rel=\"noopener noreferrer\">@Sidrajaram</a> and <a class=\"inline-link\" href=\"https://www.linkedin.com/in/rithvikchuppala/\" target=\"_blank\" rel=\"noopener noreferrer\">@RithvikChuppala</a>, growing from 0 to 2M+ impressions and 0 to $40k revenue."
         ]
       }
     ]

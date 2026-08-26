@@ -360,6 +360,15 @@ footer.site-footer .wrap {
   margin-bottom: 20px;
 }
 
+.inline-link {
+  color: #0a66c2;
+  border-bottom: 1px solid rgba(10, 102, 194, 0.35);
+}
+
+.inline-link:hover {
+  border-color: rgba(10, 102, 194, 0.8);
+}
+
 .detail-facts {
   display: flex;
   flex-wrap: wrap;
