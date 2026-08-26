@@ -55,12 +55,12 @@ const PROJECTS = [
     photos: [
       {
         image: "assets/gamma.jpg",
-        caption: "3 Perspectives on the process and creativity of visual communication in the age of AI.",
-        captionLarge: true,
         url: "https://www.linkedin.com/feed/update/urn:li:activity:7478933854884425728/"
       }
     ],
-    body: []
+    body: [
+      "3 Perspectives on the process and creativity of visual communication in the age of AI."
+    ]
   },
   {
     slug: "jumboventures",
