@@ -344,6 +344,11 @@ footer.site-footer .wrap {
   max-width: 32ch;
 }
 
+.detail-section-title {
+  font-size: 1.7rem;
+  margin: 56px 0 24px;
+}
+
 .detail-body {
   margin-top: 40px;
 }

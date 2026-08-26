@@ -128,6 +128,30 @@ function renderDetail() {
     }).join("");
   })() : "";
 
+  // Numbered sections: an optional heading, a row of images (max 2 per
+  // row), then a shared caption below the whole row.
+  const sectionsHtml = (project.sections || []).map((s) => {
+    const titleHtml = s.title ? `<h2 class="detail-section-title">${s.title}</h2>` : "";
+
+    const rowSize = 2;
+    const imgRows = [];
+    for (let i = 0; i < (s.images || []).length; i += rowSize) {
+      imgRows.push(s.images.slice(i, i + rowSize));
+    }
+    const rowsHtml = imgRows.map((row) => {
+      const colsHtml = row.map((src) => `
+        <div class="gallery-col">
+          <div class="gallery-photo"><img src="${src}" alt="${project.title}" /></div>
+        </div>
+      `).join("");
+      return `<div class="detail-gallery">${colsHtml}</div>`;
+    }).join("");
+
+    const textHtml = (s.text || []).map((para) => `<p>${para}</p>`).join("");
+
+    return `${titleHtml}${rowsHtml}${textHtml ? `<div class="detail-body">${textHtml}</div>` : ""}`;
+  }).join("");
+
   if (project.videos && project.videos.length) {
     // Standard layout: max 2 columns per row. Each column stacks its own
     // thumbnail on top and its own paragraph(s) directly below it — so
@@ -172,11 +196,12 @@ function renderDetail() {
       ${photosHtml}
       ${rowsHtml}
       ${galleryHtml}
+      ${sectionsHtml}
       ${extraBodyHtml ? `<div class="detail-body">${extraBodyHtml}</div>` : ""}
     `;
   } else {
     const bodyHtml = (project.body || []).map((para) => `<p>${para}</p>`).join("");
-    el.innerHTML = `${headerHtml}${photosHtml}${galleryHtml}${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}`;
+    el.innerHTML = `${headerHtml}${photosHtml}${galleryHtml}${sectionsHtml}${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}`;
   }
 
   playBookOpeningIntro(project);

@@ -101,9 +101,16 @@ const PROJECTS = [
     role: "Backed by Y Combinator — planet scale people sourcing",
     meta: "Head of Growth",
     cover: "assets/clodo-cover.jpg",
-    body: [
-      "Placeholder body copy for the Clodo AI project detail page. Replace with the real write-up once content is finalized.",
-      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+    // Numbered sections: an optional heading, a row of images (max 2 per
+    // row), then a shared caption below the whole row.
+    sections: [
+      {
+        title: "#1 Growth",
+        images: ["assets/clodo-1.png", "assets/clodo-2.png"],
+        text: [
+          "Created Founder-Led content on LinkedIn, scaling from 0 to 2M+ impressions, 0 to $40k revenue."
+        ]
+      }
     ]
   },
   {
