@@ -37,8 +37,8 @@ const PROJECTS = [
     // Each entry is a clickable thumbnail that opens the Instagram Reel
     // in a new tab. Swap in the real thumbnail filenames + Reel URLs.
     videos: [
-      { thumbnail: "assets/sunrooof-reel-1.jpg", url: "#" },
-      { thumbnail: "assets/sunrooof-reel-2.jpg", url: "#" }
+      { thumbnail: "assets/sunrooof-reel-1.jpg", url: "https://www.instagram.com/reel/Dbx7BBmJCUR/" },
+      { thumbnail: "assets/sunrooof-reel-2.jpg", url: "https://www.instagram.com/p/DWBnBYdkSQD/" }
     ]
   },
   {
