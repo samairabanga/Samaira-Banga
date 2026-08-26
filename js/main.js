@@ -70,17 +70,25 @@ function renderDetail() {
 
   document.title = `${project.title} — Samaira Banga`;
 
-  const factsHtml = Object.entries(project.facts)
-    .map(([k, v]) => `<div><span>${k}</span>${v}</div>`)
-    .join("");
+  const summaryHtml = project.summary
+    ? `<p class="detail-summary">${project.summary}</p>` : "";
+
+  const metaHtml = project.meta
+    ? `<div class="detail-meta">${project.meta}</div>` : "";
+
+  const factsHtml = project.facts
+    ? `<div class="detail-facts">${Object.entries(project.facts)
+        .map(([k, v]) => `<div><span>${k}</span>${v}</div>`)
+        .join("")}</div>` : "";
 
   const bodyHtml = project.body.map((para) => `<p>${para}</p>`).join("");
 
   const textHtml = `
     <div class="detail-role">${project.role}</div>
     <h1 class="detail-title">${project.title}</h1>
-    <p class="detail-summary">${project.summary}</p>
-    <div class="detail-facts">${factsHtml}</div>
+    ${summaryHtml}
+    ${metaHtml}
+    ${factsHtml}
     <div class="detail-body">${bodyHtml}</div>
   `;
 

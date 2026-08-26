@@ -23,16 +23,11 @@ const PROJECTS = [
     slug: "sunrooof",
     title: "SUNROOOF",
     role: "Patented wellness lighting technology",
-    summary: "Placeholder summary of your work at SUNROOOF. Swap this out with the real description.",
+    meta: "Brand Marketing Intern Summer 2026",
     cover: "assets/sunrooof-cover.jpg",
-    facts: {
-      Role: "TBD",
-      Year: "TBD",
-      Type: "TBD"
-    },
     body: [
-      "Placeholder body copy for the SUNROOOF project detail page. Replace with the real write-up once content is finalized.",
-      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+      "<strong>#1 Founder-led storytelling:</strong> Historical backdrop of the tube light as one of mankind’s most important invention to the modern day living in urban cities. We’ve spent over a century making artificial light better. But our bodies evolved with sunlight that changes with the day and supports our well-being. So why keep improving artificial light when we can bring the experience of sunlight indoors? That’s why we built SUNROOOF. Because lighting shouldn’t just help you see. It should help you live well. SUNROOOF is sunlight. And anything else? It’s just another light.",
+      "<strong>#2 Celebrity Collaboration:</strong> Building social proof through Bollywood actress Shilpa Shetty."
     ],
     // Each entry is a clickable thumbnail that opens the Instagram Reel
     // in a new tab. Swap in the real thumbnail filenames + Reel URLs.

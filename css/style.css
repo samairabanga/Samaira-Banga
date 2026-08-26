@@ -316,6 +316,15 @@ footer.site-footer .wrap {
   max-width: 78ch;
 }
 
+.detail-meta {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(28, 26, 23, 0.12);
+  border-bottom: 1px solid rgba(28, 26, 23, 0.12);
+}
+
 .detail-body {
   column-count: 2;
   column-gap: 64px;
