@@ -74,6 +74,11 @@ const PROJECTS = [
       "Hosted a Vibe-coding Hackathon during Boston's first A16Z Tech Week.",
       "Social marketing before the event, resulting in 100+ attendees.",
       "Sponsorships from Gamma, Lovable, and Silicon Valley Bank."
+    ],
+    // Both link out to the same LinkedIn post per the given URL.
+    videos: [
+      { thumbnail: "assets/girlsintovc-photo-1.jpg", url: "https://www.linkedin.com/feed/update/urn:li:activity:7467707389861928960/" },
+      { thumbnail: "assets/girlsintovc-photo-2.jpg", url: "https://www.linkedin.com/feed/update/urn:li:activity:7467707389861928960/" }
     ]
   }
 ];

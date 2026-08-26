@@ -95,15 +95,24 @@ function renderDetail() {
     // exactly the same vertical position (a shared CSS grid row).
     const pairCount = Math.min(project.videos.length, project.body.length);
 
-    const rowsHtml = project.videos.slice(0, pairCount).map((v, i) => `
-      <div class="video-row">
-        <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${project.title} video ${i + 1} on Instagram">
-          <img src="${v.thumbnail}" alt="${project.title} video ${i + 1} thumbnail" />
-          <span class="play-badge">&#9654;</span>
-        </a>
-        <div class="video-row-text"><p>${project.body[i]}</p></div>
-      </div>
-    `).join("");
+    const rowsHtml = project.videos.slice(0, pairCount).map((v, i) => {
+      const isVideo = /instagram\.com/.test(v.url);
+      const label = isVideo
+        ? `Watch ${project.title} video ${i + 1} on Instagram`
+        : `View ${project.title} photo ${i + 1} on LinkedIn`;
+      const altText = isVideo ? `video ${i + 1} thumbnail` : `photo ${i + 1}`;
+      const badge = isVideo ? `<span class="play-badge">&#9654;</span>` : "";
+
+      return `
+        <div class="video-row">
+          <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${label}">
+            <img src="${v.thumbnail}" alt="${project.title} ${altText}" />
+            ${badge}
+          </a>
+          <div class="video-row-text"><p>${project.body[i]}</p></div>
+        </div>
+      `;
+    }).join("");
 
     const extraBodyHtml = project.body.slice(pairCount).map((para) => `<p>${para}</p>`).join("");
 
