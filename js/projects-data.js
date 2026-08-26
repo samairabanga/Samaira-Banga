@@ -68,9 +68,29 @@ const PROJECTS = [
     role: "Tufts startup incubator club",
     meta: "Director of Partnerships",
     cover: "assets/jumboventures-cover.jpg",
-    body: [
-      "Placeholder body copy for the JumboVentures project detail page. Replace with the real write-up once content is finalized.",
-      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+    // Landscape/mixed-aspect photos — rendered at their natural aspect
+    // ratio (unlike the portrait video thumbnails), 2 per row, each with
+    // its own caption directly below it.
+    gallery: [
+      {
+        image: "assets/jv1.png",
+        text: ["Hosted 5+ podcast-style fireside chats with Alumni:"]
+      },
+      {
+        image: "assets/jv2.png",
+        text: [
+          "Jesse Zhang, Co-Founder @ Beacons AI. Zoe Watson, Co-Founder @ Microvitality.",
+          "Hani Azzam, VC Partner. Katy Nelson, Ex-A16z. Steve Kaufer, CEO @ Tripadvisor."
+        ]
+      },
+      {
+        image: "assets/jv3.png",
+        text: ["Generated 50k+ LinkedIn impressions for Jumboventures."]
+      },
+      {
+        image: "assets/jv4.png",
+        text: ["Generated awareness and event attendance across other Boston schools."]
+      }
     ]
   },
   {

@@ -98,6 +98,36 @@ function renderDetail() {
     ${p.caption ? `<p class="detail-photo-caption${p.captionLarge ? " is-large" : ""}">${p.caption}</p>` : ""}
   `).join("");
 
+  // Photo gallery: max 2 columns per row, each image kept at its own
+  // natural aspect ratio (unlike the fixed-portrait video thumbnails),
+  // with its own caption paragraph(s) directly below it.
+  const galleryHtml = (project.gallery && project.gallery.length) ? (() => {
+    const rowSize = 2;
+    const rows = [];
+    for (let i = 0; i < project.gallery.length; i += rowSize) {
+      rows.push(project.gallery.slice(i, i + rowSize));
+    }
+
+    return rows.map((row) => {
+      const colsHtml = row.map((g) => {
+        const imgHtml = `<img src="${g.image}" alt="${project.title}" />`;
+        const media = g.url
+          ? `<a class="gallery-photo" href="${g.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} photo">${imgHtml}</a>`
+          : `<div class="gallery-photo">${imgHtml}</div>`;
+        const textHtml = (g.text || []).map((para) => `<p>${para}</p>`).join("");
+
+        return `
+          <div class="gallery-col">
+            ${media}
+            ${textHtml ? `<div class="gallery-col-text">${textHtml}</div>` : ""}
+          </div>
+        `;
+      }).join("");
+
+      return `<div class="detail-gallery">${colsHtml}</div>`;
+    }).join("");
+  })() : "";
+
   if (project.videos && project.videos.length) {
     // Standard layout: max 2 columns per row. Each column stacks its own
     // thumbnail on top and its own paragraph(s) directly below it — so
@@ -141,11 +171,12 @@ function renderDetail() {
       ${headerHtml}
       ${photosHtml}
       ${rowsHtml}
+      ${galleryHtml}
       ${extraBodyHtml ? `<div class="detail-body">${extraBodyHtml}</div>` : ""}
     `;
   } else {
     const bodyHtml = (project.body || []).map((para) => `<p>${para}</p>`).join("");
-    el.innerHTML = `${headerHtml}${photosHtml}${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}`;
+    el.innerHTML = `${headerHtml}${photosHtml}${galleryHtml}${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}`;
   }
 
   playBookOpeningIntro(project);

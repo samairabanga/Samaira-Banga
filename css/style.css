@@ -402,6 +402,25 @@ footer.site-footer .wrap {
   margin-top: 20px;
 }
 
+.gallery-photo {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 10px 14px 24px rgba(28, 26, 23, 0.22);
+}
+
+.gallery-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.gallery-photo:hover img {
+  transform: scale(1.02);
+}
+
 .detail-video-thumb {
   position: relative;
   display: block;
