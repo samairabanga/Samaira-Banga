@@ -74,12 +74,14 @@ const PROJECTS = [
     gallery: [
       {
         image: "assets/jv1.png",
-        text: ["Hosted 5+ podcast-style fireside chats with Alumni:"]
+        text: [
+          "Hosted 5+ podcast-style fireside chats with Alumni:",
+          "Jesse Zhang, Co-Founder @ Beacons AI. Zoe Watson, Co-Founder @ Microvitality."
+        ]
       },
       {
         image: "assets/jv2.png",
         text: [
-          "Jesse Zhang, Co-Founder @ Beacons AI. Zoe Watson, Co-Founder @ Microvitality.",
           "Hani Azzam, VC Partner. Katy Nelson, Ex-A16z. Steve Kaufer, CEO @ Tripadvisor."
         ]
       },
@@ -91,7 +93,7 @@ const PROJECTS = [
       {
         image: "assets/jv4.png",
         url: "https://www.linkedin.com/feed/update/urn:li:activity:7452822623039852544/",
-        text: ["Generated awareness and event attendance across other Boston schools."]
+        text: ["Increasing awareness and event attendance across other Boston schools."]
       }
     ]
   },
