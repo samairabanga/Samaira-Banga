@@ -139,7 +139,7 @@ const PROJECTS = [
         thumbnail: "assets/girlsintovc-photo-3.jpg",
         url: "https://www.instagram.com/reels/DbL_dWmSLYs/",
         text: [
-          "Content targeted at increasing community membership, 12k+ views, 3% conversion rate."
+          "Created short-form content targeted at increasing community membership, 12k+ views, 3% conversion rate."
         ]
       }
     ]
