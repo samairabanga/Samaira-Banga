@@ -71,8 +71,9 @@ const PROJECTS = [
     meta: "Regional Lead",
     cover: "assets/girlsintovc-cover.jpg",
     body: [
-      "Placeholder body copy for the Girls into VC project detail page. Replace with the real write-up once content is finalized.",
-      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
+      "Hosted a Vibe-coding Hackathon during Boston's first A16Z Tech Week.",
+      "Social marketing before the event, resulting in 100+ attendees.",
+      "Sponsorships from Gamma, Lovable, and Silicon Valley Bank."
     ]
   }
 ];
