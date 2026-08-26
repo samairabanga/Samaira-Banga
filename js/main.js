@@ -229,5 +229,32 @@ function playBookOpeningIntro(project) {
   });
 }
 
+function scheduleCrumbleFlight() {
+  const main = document.querySelector(".home-main");
+  if (!main) return;
+
+  setTimeout(() => {
+    main.classList.add("crumbling");
+
+    const plane = document.createElement("div");
+    plane.className = "paper-plane";
+    plane.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>`;
+    document.body.appendChild(plane);
+
+    setTimeout(() => {
+      plane.classList.add("appear");
+    }, 650);
+
+    setTimeout(() => {
+      plane.classList.add("fly");
+    }, 1000);
+
+    setTimeout(() => {
+      window.location.href = "projects.html";
+    }, 1850);
+  }, 8000);
+}
+
 renderBookshelf();
 renderDetail();
+scheduleCrumbleFlight();

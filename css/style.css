@@ -129,6 +129,50 @@ footer.site-footer .wrap {
   display: block;
 }
 
+/* ---------- Home page: auto crumble-to-airplane transition ---------- */
+
+.home-main.crumbling {
+  animation: crumble 0.7s cubic-bezier(0.55, 0, 0.85, 0.35) forwards;
+}
+
+@keyframes crumble {
+  0% { transform: scale(1) rotate(0deg); opacity: 1; }
+  30% { transform: scale(0.85) rotate(-3deg); opacity: 1; }
+  60% { transform: scale(0.4) rotate(6deg); opacity: 0.8; }
+  100% { transform: scale(0.02) rotate(-10deg); opacity: 0; }
+}
+
+.paper-plane {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1200;
+  color: var(--ink);
+}
+
+.paper-plane.appear {
+  animation: plane-appear 0.35s ease forwards;
+}
+
+@keyframes plane-appear {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.paper-plane.fly {
+  animation: plane-fly 0.85s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+@keyframes plane-fly {
+  0% { transform: translate(-50%, -50%) translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) translate(70vw, -80vh) scale(0.25) rotate(10deg); opacity: 0; }
+}
+
 /* ---------- Projects page: bookshelf ---------- */
 
 .shelf-note {
