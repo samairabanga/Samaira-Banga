@@ -24,7 +24,7 @@ const PROJECTS = [
     slug: "sunrooof",
     title: "SUNROOOF",
     role: "Patented wellness lighting technology",
-    meta: "Brand Marketing Intern Summer 2026",
+    meta: "Brand Marketing Intern",
     cover: "assets/sunrooof-cover.jpg",
     // Each entry is a clickable thumbnail (opens the Instagram Reel in a
     // new tab) paired with its own `text` paragraph(s), rendered right
@@ -75,14 +75,13 @@ const PROJECTS = [
       {
         image: "assets/jv1.png",
         text: [
-          "Hosted 5+ podcast-style fireside chats with Alumni:",
-          "Jesse Zhang, Co-Founder @ Beacons AI. Zoe Watson, Co-Founder @ Microvitality."
+          "Hosted 5+ podcast-style fireside chats with Alumni:"
         ]
       },
       {
         image: "assets/jv2.png",
         text: [
-          "Hani Azzam, VC Partner. Katy Nelson, Ex-A16z. Steve Kaufer, CEO @ Tripadvisor."
+          "Jesse Zhang, Beacons AI. Katy Nelson, Ex-A16z. Steve Kaufer, CEO @ Tripadvisor."
         ]
       },
       {
