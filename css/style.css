@@ -345,15 +345,12 @@ footer.site-footer .wrap {
 }
 
 .detail-body {
-  column-count: 2;
-  column-gap: 64px;
   margin-top: 40px;
 }
 
 .detail-body p {
   color: var(--ink-soft);
   font-size: 1.08rem;
-  break-inside: avoid;
   margin-top: 0;
   margin-bottom: 20px;
 }
@@ -438,7 +435,6 @@ footer.site-footer .wrap {
   .page-title { font-size: 2.4rem; }
   .detail-title { font-size: 2.8rem; }
   .detail-summary { font-size: 1.15rem; }
-  .detail-body { column-count: 1; }
   .video-row { grid-template-columns: 1fr; gap: 20px; }
   nav.main-nav { gap: 24px; }
 }
