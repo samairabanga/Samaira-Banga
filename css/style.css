@@ -396,6 +396,10 @@ footer.site-footer .wrap {
   font-size: 1.08rem;
 }
 
+.video-row-text p + p {
+  margin-top: 20px;
+}
+
 .detail-video-thumb {
   position: relative;
   display: block;

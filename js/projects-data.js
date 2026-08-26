@@ -28,15 +28,24 @@ const PROJECTS = [
     role: "Patented wellness lighting technology",
     meta: "Brand Marketing Intern Summer 2026",
     cover: "assets/sunrooof-cover.jpg",
-    body: [
-      "<strong>#1 Founder-led storytelling:</strong> Historical backdrop of the tube light as one of mankind’s most important invention to the modern day living in urban cities. We’ve spent over a century making artificial light better. But our bodies evolved with sunlight that changes with the day and supports our well-being. So why keep improving artificial light when we can bring the experience of sunlight indoors? That’s why we built SUNROOOF. Because lighting shouldn’t just help you see. It should help you live well. SUNROOOF is sunlight. And anything else? It’s just another light.",
-      "<strong>#2 Celebrity Collaboration:</strong> Building social proof through Bollywood actress Shilpa Shetty."
-    ],
-    // Each entry is a clickable thumbnail that opens the Instagram Reel
-    // in a new tab. Swap in the real thumbnail filenames + Reel URLs.
+    // Each entry is a clickable thumbnail (opens the Instagram Reel in a
+    // new tab) paired with its own `text` paragraph(s), rendered right
+    // next to it in a shared grid row.
     videos: [
-      { thumbnail: "assets/sunrooof-reel-1.jpg", url: "https://www.instagram.com/reel/Dbx7BBmJCUR/" },
-      { thumbnail: "assets/sunrooof-reel-2.jpg", url: "https://www.instagram.com/p/DWBnBYdkSQD/" }
+      {
+        thumbnail: "assets/sunrooof-reel-1.jpg",
+        url: "https://www.instagram.com/reel/Dbx7BBmJCUR/",
+        text: [
+          "<strong>#1 Founder-led storytelling:</strong> Historical backdrop of the tube light as one of mankind’s most important invention to the modern day living in urban cities. We’ve spent over a century making artificial light better. But our bodies evolved with sunlight that changes with the day and supports our well-being. So why keep improving artificial light when we can bring the experience of sunlight indoors? That’s why we built SUNROOOF. Because lighting shouldn’t just help you see. It should help you live well. SUNROOOF is sunlight. And anything else? It’s just another light."
+        ]
+      },
+      {
+        thumbnail: "assets/sunrooof-reel-2.jpg",
+        url: "https://www.instagram.com/p/DWBnBYdkSQD/",
+        text: [
+          "<strong>#2 Celebrity Collaboration:</strong> Building social proof through Bollywood actress Shilpa Shetty."
+        ]
+      }
     ]
   },
   {
@@ -83,15 +92,29 @@ const PROJECTS = [
     role: "Closing the gender gap in venture capital",
     meta: "Regional Lead",
     cover: "assets/girlsintovc-cover.jpg",
-    body: [
-      "Hosted a Vibe-coding Hackathon during Boston's first A16Z Tech Week.",
-      "Social marketing before the event, resulting in 100+ attendees.",
-      "Sponsorships from Gamma, Lovable, and Silicon Valley Bank."
-    ],
-    // Both link out to the same LinkedIn post per the given URL.
     videos: [
-      { thumbnail: "assets/girlsintovc-photo-1.jpg", url: "https://www.linkedin.com/feed/update/urn:li:activity:7467707389861928960/" },
-      { thumbnail: "assets/girlsintovc-photo-2.jpg", url: "https://www.linkedin.com/feed/update/urn:li:activity:7467707389861928960/" }
+      {
+        thumbnail: "assets/girlsintovc-photo-1.jpg",
+        url: "https://www.linkedin.com/feed/update/urn:li:activity:7467707389861928960/",
+        text: [
+          "Hosted a Vibe-coding Hackathon during Boston's first A16Z Tech Week."
+        ]
+      },
+      {
+        thumbnail: "assets/girlsintovc-photo-2.jpg",
+        url: "https://www.linkedin.com/feed/update/urn:li:activity:7467707389861928960/",
+        text: [
+          "Social marketing before the event, resulting in 100+ attendees.",
+          "Sponsorships from Gamma, Lovable, and Silicon Valley Bank."
+        ]
+      },
+      {
+        thumbnail: "assets/girlsintovc-photo-3.jpg",
+        url: "https://www.instagram.com/reels/DbL_dWmSLYs/",
+        text: [
+          "Content targeted at increasing community membership, 12k+ views, 3% conversion rate."
+        ]
+      }
     ]
   }
 ];

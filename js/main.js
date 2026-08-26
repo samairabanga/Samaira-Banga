@@ -99,18 +99,17 @@ function renderDetail() {
   `).join("");
 
   if (project.videos && project.videos.length) {
-    // Pair each video with the body paragraph at the same index, so
-    // e.g. video 2's thumbnail and the "#2 ..." paragraph start at
-    // exactly the same vertical position (a shared CSS grid row).
-    const pairCount = Math.min(project.videos.length, project.body.length);
-
-    const rowsHtml = project.videos.slice(0, pairCount).map((v, i) => {
+    // Each video carries its own `text` paragraph(s), rendered right next
+    // to it in a shared grid row — so however many paragraphs a video
+    // needs, they start at exactly that video's vertical position.
+    const rowsHtml = project.videos.map((v, i) => {
       const isVideo = /instagram\.com/.test(v.url);
       const label = isVideo
         ? `Watch ${project.title} video ${i + 1} on Instagram`
         : `View ${project.title} photo ${i + 1} on LinkedIn`;
       const altText = isVideo ? `video ${i + 1} thumbnail` : `photo ${i + 1}`;
       const badge = isVideo ? `<span class="play-badge">&#9654;</span>` : "";
+      const rowTextHtml = (v.text || []).map((t) => `<p>${t}</p>`).join("");
 
       return `
         <div class="video-row">
@@ -118,21 +117,21 @@ function renderDetail() {
             <img src="${v.thumbnail}" alt="${project.title} ${altText}" />
             ${badge}
           </a>
-          <div class="video-row-text"><p>${project.body[i]}</p></div>
+          <div class="video-row-text">${rowTextHtml}</div>
         </div>
       `;
     }).join("");
 
-    const extraBodyHtml = project.body.slice(pairCount).map((para) => `<p>${para}</p>`).join("");
+    const bodyHtml = (project.body || []).map((para) => `<p>${para}</p>`).join("");
 
     el.innerHTML = `
       ${headerHtml}
       ${photosHtml}
       <div class="detail-video-rows">${rowsHtml}</div>
-      ${extraBodyHtml ? `<div class="detail-body">${extraBodyHtml}</div>` : ""}
+      ${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}
     `;
   } else {
-    const bodyHtml = project.body.map((para) => `<p>${para}</p>`).join("");
+    const bodyHtml = (project.body || []).map((para) => `<p>${para}</p>`).join("");
     el.innerHTML = `${headerHtml}${photosHtml}${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}`;
   }
 
