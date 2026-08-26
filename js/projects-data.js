@@ -81,7 +81,7 @@ const PROJECTS = [
       {
         image: "assets/jv2.png",
         text: [
-          "Jesse Zhang, Beacons AI. Katy Nelson, Ex-A16z. Steve Kaufer, CEO @ Tripadvisor."
+          "Jesse Zhang, Beacons AI. Katy Nelson, Ex-A16z. Steve Kaufer, Tripadvisor."
         ]
       },
       {
