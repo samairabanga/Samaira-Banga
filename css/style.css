@@ -384,8 +384,8 @@ footer.site-footer .wrap {
 }
 
 .detail-gallery .detail-video-thumb {
-  flex: 1 1 220px;
-  max-width: 320px;
+  flex: 1 1 320px;
+  max-width: 620px;
 }
 
 .detail-video-thumb {
