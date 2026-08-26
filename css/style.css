@@ -374,7 +374,7 @@ footer.site-footer .wrap {
   margin-bottom: 4px;
 }
 
-/* ---------- Project videos (all thumbnails in a row, text flows below) ---------- */
+/* ---------- Project videos (max 2 columns; each pic's text sits under it) ---------- */
 
 .detail-gallery {
   display: flex;
@@ -383,14 +383,29 @@ footer.site-footer .wrap {
   margin-top: 40px;
 }
 
-.detail-gallery .detail-video-thumb {
+.gallery-col {
   flex: 1 1 320px;
   max-width: 620px;
+}
+
+.gallery-col-text {
+  margin-top: 20px;
+}
+
+.gallery-col-text p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+
+.gallery-col-text p + p {
+  margin-top: 20px;
 }
 
 .detail-video-thumb {
   position: relative;
   display: block;
+  width: 100%;
   aspect-ratio: 9 / 16;
   border-radius: 6px;
   overflow: hidden;
@@ -428,6 +443,6 @@ footer.site-footer .wrap {
   .detail-title { font-size: 2.8rem; }
   .detail-summary { font-size: 1.15rem; }
   .detail-gallery { gap: 16px; }
-  .detail-gallery .detail-video-thumb { flex-basis: 140px; }
+  .gallery-col { flex-basis: 140px; }
   nav.main-nav { gap: 24px; }
 }

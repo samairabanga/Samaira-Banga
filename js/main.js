@@ -99,10 +99,10 @@ function renderDetail() {
   `).join("");
 
   if (project.videos && project.videos.length) {
-    // Standard layout: max 2 thumbnails per row. Each row's text (every
-    // paragraph from the videos in that row, in order) sits directly
-    // below that row — a 3rd, 5th, etc. image starts a new row with its
-    // own text below it, rather than everything piling into one block.
+    // Standard layout: max 2 columns per row. Each column stacks its own
+    // thumbnail on top and its own paragraph(s) directly below it — so
+    // e.g. video 2's text sits under video 2's picture, not spread
+    // across the whole row.
     const rowSize = 2;
     const rows = [];
     for (let i = 0; i < project.videos.length; i += rowSize) {
@@ -111,7 +111,7 @@ function renderDetail() {
 
     let globalIndex = 0;
     const rowsHtml = rows.map((row) => {
-      const galleryHtml = row.map((v) => {
+      const colsHtml = row.map((v) => {
         const i = globalIndex++;
         const isVideo = /instagram\.com/.test(v.url);
         const label = isVideo
@@ -119,24 +119,20 @@ function renderDetail() {
           : `View ${project.title} photo ${i + 1} on LinkedIn`;
         const altText = isVideo ? `video ${i + 1} thumbnail` : `photo ${i + 1}`;
         const badge = isVideo ? `<span class="play-badge">&#9654;</span>` : "";
+        const colTextHtml = (v.text || []).map((para) => `<p>${para}</p>`).join("");
 
         return `
-          <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${label}">
-            <img src="${v.thumbnail}" alt="${project.title} ${altText}" />
-            ${badge}
-          </a>
+          <div class="gallery-col">
+            <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${label}">
+              <img src="${v.thumbnail}" alt="${project.title} ${altText}" />
+              ${badge}
+            </a>
+            ${colTextHtml ? `<div class="gallery-col-text">${colTextHtml}</div>` : ""}
+          </div>
         `;
       }).join("");
 
-      const rowTextHtml = row
-        .flatMap((v) => v.text || [])
-        .map((para) => `<p>${para}</p>`)
-        .join("");
-
-      return `
-        <div class="detail-gallery">${galleryHtml}</div>
-        ${rowTextHtml ? `<div class="detail-body">${rowTextHtml}</div>` : ""}
-      `;
+      return `<div class="detail-gallery">${colsHtml}</div>`;
     }).join("");
 
     const extraBodyHtml = (project.body || []).map((para) => `<p>${para}</p>`).join("");
