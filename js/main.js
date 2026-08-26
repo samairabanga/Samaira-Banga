@@ -234,24 +234,32 @@ function scheduleCrumbleFlight() {
   if (!main) return;
 
   setTimeout(() => {
-    main.classList.add("crumbling");
+    main.classList.add("crumple");
 
-    const plane = document.createElement("div");
-    plane.className = "paper-plane";
-    plane.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>`;
-    document.body.appendChild(plane);
+    const ball = document.createElement("div");
+    ball.className = "paper-ball";
+    document.body.appendChild(ball);
+
+    const blackout = document.createElement("div");
+    blackout.className = "blackout";
+    blackout.innerHTML = `<p class="blackout-text">Always shoot your shot.</p>`;
+    document.body.appendChild(blackout);
 
     setTimeout(() => {
-      plane.classList.add("appear");
-    }, 650);
+      ball.classList.add("shoot");
+    }, 550);
 
     setTimeout(() => {
-      plane.classList.add("fly");
-    }, 1000);
+      blackout.classList.add("show");
+    }, 1150);
+
+    setTimeout(() => {
+      blackout.classList.add("show-text");
+    }, 1500);
 
     setTimeout(() => {
       window.location.href = "projects.html";
-    }, 1850);
+    }, 3800);
   }, 8000);
 }
 

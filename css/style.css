@@ -129,48 +129,86 @@ footer.site-footer .wrap {
   display: block;
 }
 
-/* ---------- Home page: auto crumble-to-airplane transition ---------- */
+/* ---------- Home page: auto crumple-to-paper-ball transition ---------- */
 
-.home-main.crumbling {
-  animation: crumble 0.7s cubic-bezier(0.55, 0, 0.85, 0.35) forwards;
+.home-main.crumple {
+  animation: crumple 0.6s cubic-bezier(0.55, 0, 0.85, 0.35) forwards;
 }
 
-@keyframes crumble {
-  0% { transform: scale(1) rotate(0deg); opacity: 1; }
-  30% { transform: scale(0.85) rotate(-3deg); opacity: 1; }
-  60% { transform: scale(0.4) rotate(6deg); opacity: 0.8; }
-  100% { transform: scale(0.02) rotate(-10deg); opacity: 0; }
+@keyframes crumple {
+  0% { transform: scale(1) rotate(0deg); border-radius: 0; opacity: 1; }
+  40% { transform: scale(0.55) rotate(-8deg); border-radius: 40%; opacity: 1; }
+  100% { transform: scale(0.06) rotate(20deg); border-radius: 50%; opacity: 0.9; }
 }
 
-.paper-plane {
+.paper-ball {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 64px;
-  height: 64px;
-  transform: translate(-50%, -50%) scale(0);
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%) scale(0.4);
+  border-radius: 46% 54% 61% 39% / 45% 40% 60% 55%;
+  background: radial-gradient(circle at 35% 30%, #fdfbf5, #cfc7b6 65%, #a89f8d 100%);
+  box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.3);
   opacity: 0;
-  pointer-events: none;
   z-index: 1200;
-  color: var(--ink);
+  animation: ball-in 0.25s ease 0.35s forwards;
 }
 
-.paper-plane.appear {
-  animation: plane-appear 0.35s ease forwards;
+@keyframes ball-in {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
-@keyframes plane-appear {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+.paper-ball.shoot {
+  animation: ball-shoot 0.7s cubic-bezier(0.3, 0, 0.6, 1) forwards;
 }
 
-.paper-plane.fly {
-  animation: plane-fly 0.85s cubic-bezier(0.45, 0, 0.2, 1) forwards;
-}
-
-@keyframes plane-fly {
+@keyframes ball-shoot {
   0% { transform: translate(-50%, -50%) translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
-  100% { transform: translate(-50%, -50%) translate(70vw, -80vh) scale(0.25) rotate(10deg); opacity: 0; }
+  40% { transform: translate(-50%, -50%) translate(55vw, -30vh) scale(0.7) rotate(180deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) translate(95vw, 10vh) scale(0.3) rotate(360deg); opacity: 0; }
+}
+
+.blackout {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  opacity: 0;
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.blackout.show {
+  opacity: 1;
+}
+
+.blackout-text {
+  color: #f7f4ec;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 2.6rem;
+  text-align: center;
+  max-width: 80vw;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.blackout.show-text .blackout-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 760px) {
+  .blackout-text { font-size: 1.6rem; }
 }
 
 /* ---------- Projects page: bookshelf ---------- */
