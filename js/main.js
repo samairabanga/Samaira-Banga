@@ -229,37 +229,107 @@ function playBookOpeningIntro(project) {
   });
 }
 
+// Shared, lazily-created AudioContext. Browsers block audio from starting
+// on its own, so we "unlock" it on the very first user interaction and
+// reuse that same context later when the tear sound actually needs to play.
+let audioCtx = null;
+
+function unlockAudio() {
+  if (audioCtx) return;
+  const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtxClass) return;
+  audioCtx = new AudioCtxClass();
+}
+
+["pointerdown", "keydown"].forEach((evt) => {
+  window.addEventListener(evt, unlockAudio, { once: true });
+});
+
+function playTearSound() {
+  unlockAudio();
+  if (!audioCtx) return;
+  if (audioCtx.state === "suspended") audioCtx.resume();
+
+  const duration = 0.9;
+  const sampleRate = audioCtx.sampleRate;
+  const buffer = audioCtx.createBuffer(1, Math.floor(sampleRate * duration), sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < data.length; i++) {
+    data[i] = Math.random() * 2 - 1;
+  }
+
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = buffer;
+
+  const bandpass = audioCtx.createBiquadFilter();
+  bandpass.type = "bandpass";
+  bandpass.Q.value = 0.6;
+  bandpass.frequency.setValueAtTime(1400, audioCtx.currentTime);
+  bandpass.frequency.linearRampToValueAtTime(3200, audioCtx.currentTime + duration * 0.55);
+  bandpass.frequency.linearRampToValueAtTime(700, audioCtx.currentTime + duration);
+
+  const highpass = audioCtx.createBiquadFilter();
+  highpass.type = "highpass";
+  highpass.frequency.value = 350;
+
+  const gainNode = audioCtx.createGain();
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(1, audioCtx.currentTime + 0.02);
+  gainNode.gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + duration * 0.5);
+  gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + duration);
+
+  noise.connect(bandpass);
+  bandpass.connect(highpass);
+  highpass.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  noise.start();
+  noise.stop(audioCtx.currentTime + duration);
+}
+
 function scheduleCrumbleFlight() {
   const main = document.querySelector(".home-main");
   if (!main) return;
 
   setTimeout(() => {
-    main.classList.add("crumple");
+    const rect = main.getBoundingClientRect();
+    const innerHtml = main.innerHTML;
 
-    const ball = document.createElement("div");
-    ball.className = "paper-ball";
-    document.body.appendChild(ball);
+    const left = document.createElement("div");
+    left.className = "tear-half tear-left";
+    left.style.top = `${rect.top}px`;
+    left.style.left = `${rect.left}px`;
+    left.style.width = `${rect.width}px`;
+    left.style.height = `${rect.height}px`;
+    left.innerHTML = innerHtml;
 
-    const blackout = document.createElement("div");
-    blackout.className = "blackout";
-    blackout.innerHTML = `<p class="blackout-text">Always shoot your shot.</p>`;
-    document.body.appendChild(blackout);
+    const right = document.createElement("div");
+    right.className = "tear-half tear-right";
+    right.style.top = `${rect.top}px`;
+    right.style.left = `${rect.left}px`;
+    right.style.width = `${rect.width}px`;
+    right.style.height = `${rect.height}px`;
+    right.innerHTML = innerHtml;
 
-    setTimeout(() => {
-      ball.classList.add("shoot");
-    }, 550);
+    document.body.appendChild(left);
+    document.body.appendChild(right);
+    main.style.visibility = "hidden";
 
-    setTimeout(() => {
-      blackout.classList.add("show");
-    }, 1150);
+    playTearSound();
 
-    setTimeout(() => {
-      blackout.classList.add("show-text");
-    }, 1500);
+    // Force layout so the browser registers the starting position before
+    // animating the two halves apart.
+    // eslint-disable-next-line no-unused-expressions
+    left.getBoundingClientRect();
+
+    requestAnimationFrame(() => {
+      left.classList.add("tear-apart");
+      right.classList.add("tear-apart");
+    });
 
     setTimeout(() => {
       window.location.href = "projects.html";
-    }, 3800);
+    }, 2600);
   }, 8000);
 }
 
