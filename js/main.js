@@ -95,7 +95,7 @@ function renderDetail() {
     <a class="detail-photo" href="${p.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} photo on LinkedIn">
       <img src="${p.image}" alt="${project.title}" />
     </a>
-    ${p.caption ? `<p class="detail-photo-caption">${p.caption}</p>` : ""}
+    ${p.caption ? `<p class="detail-photo-caption${p.captionLarge ? " is-large" : ""}">${p.caption}</p>` : ""}
   `).join("");
 
   if (project.videos && project.videos.length) {
@@ -133,7 +133,7 @@ function renderDetail() {
     `;
   } else {
     const bodyHtml = project.body.map((para) => `<p>${para}</p>`).join("");
-    el.innerHTML = `${headerHtml}${photosHtml}<div class="detail-body">${bodyHtml}</div>`;
+    el.innerHTML = `${headerHtml}${photosHtml}${bodyHtml ? `<div class="detail-body">${bodyHtml}</div>` : ""}`;
   }
 
   playBookOpeningIntro(project);

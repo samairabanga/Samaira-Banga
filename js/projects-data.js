@@ -43,19 +43,17 @@ const PROJECTS = [
     slug: "gamma",
     title: "GAMMA",
     role: "AI powered presentations",
-    meta: "Role — TBD",
+    meta: "Campaign",
     cover: "assets/gamma-cover.jpg",
     photos: [
       {
         image: "assets/gamma.jpg",
         caption: "3 Perspectives on the process and creativity of visual communication in the age of AI.",
+        captionLarge: true,
         url: "https://www.linkedin.com/feed/update/urn:li:activity:7478933854884425728/"
       }
     ],
-    body: [
-      "Placeholder body copy for the Gamma project detail page. Replace with the real write-up once content is finalized.",
-      "Add a second paragraph here describing outcomes, tools used, or your specific contribution."
-    ]
+    body: []
   },
   {
     slug: "jumboventures",

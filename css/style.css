@@ -334,6 +334,16 @@ footer.site-footer .wrap {
   max-width: 78ch;
 }
 
+.detail-photo-caption.is-large {
+  margin: 28px 0 40px;
+  color: var(--ink);
+  font-size: 2.4rem;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: normal;
+  max-width: 32ch;
+}
+
 .detail-body {
   column-count: 2;
   column-gap: 64px;
