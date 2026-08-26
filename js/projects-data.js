@@ -85,10 +85,12 @@ const PROJECTS = [
       },
       {
         image: "assets/jv3.png",
+        url: "https://www.linkedin.com/feed/update/urn:li:activity:7440194432399851520/",
         text: ["Generated 50k+ LinkedIn impressions for Jumboventures."]
       },
       {
         image: "assets/jv4.png",
+        url: "https://www.linkedin.com/feed/update/urn:li:activity:7452822623039852544/",
         text: ["Generated awareness and event attendance across other Boston schools."]
       }
     ]
