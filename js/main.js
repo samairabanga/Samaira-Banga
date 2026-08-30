@@ -1,3 +1,7 @@
+// Shared badge shown on every clickable photo/video thumbnail so it's
+// obvious at a glance that it links out.
+const LINK_ARROW_HTML = `<span class="link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>`;
+
 function renderBookshelf() {
   const shelf = document.getElementById("bookshelf");
   if (!shelf) return;
@@ -94,6 +98,7 @@ function renderDetail() {
   const photosHtml = (project.photos || []).map((p) => `
     <a class="detail-photo" href="${p.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} photo on LinkedIn">
       <img src="${p.image}" alt="${project.title}" />
+      ${LINK_ARROW_HTML}
     </a>
     ${p.caption ? `<p class="detail-photo-caption${p.captionLarge ? " is-large" : ""}">${p.caption}</p>` : ""}
   `).join("");
@@ -112,7 +117,7 @@ function renderDetail() {
       const colsHtml = row.map((g) => {
         const imgHtml = `<img src="${g.image}" alt="${project.title}" />`;
         const media = g.url
-          ? `<a class="gallery-photo" href="${g.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} photo">${imgHtml}</a>`
+          ? `<a class="gallery-photo" href="${g.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} photo">${imgHtml}${LINK_ARROW_HTML}</a>`
           : `<div class="gallery-photo">${imgHtml}</div>`;
         const textHtml = (g.text || []).map((para) => `<p>${para}</p>`).join("");
 
@@ -172,14 +177,13 @@ function renderDetail() {
           ? `Watch ${project.title} video ${i + 1} on Instagram`
           : `View ${project.title} photo ${i + 1} on LinkedIn`;
         const altText = isVideo ? `video ${i + 1} thumbnail` : `photo ${i + 1}`;
-        const badge = isVideo ? `<span class="play-badge">&#9654;</span>` : "";
         const colTextHtml = (v.text || []).map((para) => `<p>${para}</p>`).join("");
 
         return `
           <div class="gallery-col">
             <a class="detail-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${label}">
               <img src="${v.thumbnail}" alt="${project.title} ${altText}" />
-              ${badge}
+              ${LINK_ARROW_HTML}
             </a>
             ${colTextHtml ? `<div class="gallery-col-text">${colTextHtml}</div>` : ""}
           </div>

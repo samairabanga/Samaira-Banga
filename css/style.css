@@ -340,6 +340,7 @@ footer.site-footer .wrap {
 }
 
 .detail-photo {
+  position: relative;
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -451,6 +452,7 @@ footer.site-footer .wrap {
 }
 
 .gallery-photo {
+  position: relative;
   display: block;
   width: 100%;
   border-radius: 6px;
@@ -491,16 +493,35 @@ footer.site-footer .wrap {
   transform: scale(1.04);
 }
 
-.detail-video-thumb .play-badge {
+.link-arrow {
   position: absolute;
-  inset: 0;
+  bottom: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  background: rgba(5, 5, 5, 0.78);
   color: #fff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  background: rgba(5, 5, 5, 0.18);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.link-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+a:hover .link-arrow {
+  transform: scale(1.12);
+  background: rgba(5, 5, 5, 0.92);
+}
+
+@media (max-width: 760px) {
+  .link-arrow { width: 36px; height: 36px; bottom: 10px; right: 10px; }
+  .link-arrow svg { width: 17px; height: 17px; }
 }
 
 @media (max-width: 760px) {
