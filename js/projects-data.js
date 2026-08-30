@@ -34,7 +34,7 @@ const PROJECTS = [
         thumbnail: "assets/sunrooof-reel-1.jpg",
         url: "https://www.instagram.com/reel/Dbx7BBmJCUR/",
         text: [
-          "<strong>#1 Founder-led storytelling:</strong> We’ve spent over a century making artificial light better. But our bodies evolved with sunlight that changes with the day and supports our well-being. So why keep improving artificial light when we can bring the experience of sunlight indoors? That’s why we built SUNROOOF. Because lighting shouldn’t just help you see. It should help you live well. SUNROOOF is sunlight. And anything else? It’s just another light."
+          "<strong>#1 Founder-led storytelling:</strong> We have spent decades improving artificial light, but our bodies evolved to require natural light."
         ]
       },
       {
